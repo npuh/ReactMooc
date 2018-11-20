@@ -46,21 +46,11 @@ const App = () => {
       ]
     }
   ];
-  //Calculates the total amount of tehtavia.
-  const calculate = kurssit[0].osat.reduce((total, amount) => {
-    return (total += amount.tehtavia);
-  }, 0);
-  const calc2 = kurssit[1].osat.reduce((total, amount) => {
-    return (total += amount.tehtavia);
-  }, 0);
-
-  const total = calculate + calc2;
-  console.log("Total: ", total);
 
   return (
     <div>
       <Kurssi kurssit={kurssit} />
-      <p>Tehtäviä yhteensä: {total}</p>
+
       <hr />
       <Palaute />
       <hr />
