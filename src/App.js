@@ -4,7 +4,7 @@ import Taulukko from "./Taulukko";
 import Haku from "./Haku";
 import Anekdootti from "./Anekdootti";
 import Palaute from "./Palaute";
-import Note from "./components/Note";
+// import Note from "./components/Note";
 
 const App = () => {
   const kurssi = {
@@ -32,10 +32,16 @@ const App = () => {
       }
     ]
   };
+  //Calculates the total amount of tehtavia.
+  const calculate = kurssi.osat.reduce((total, amount) => {
+    return (total += amount.tehtavia);
+  }, 0);
+  console.log("Total: ", calculate);
 
   return (
     <div>
       <Kurssi kurssi={kurssi} />
+      <p>Tehtäviä yhteensä: {calculate}</p>
       <hr />
       <Palaute />
       <hr />
