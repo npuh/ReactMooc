@@ -1,7 +1,13 @@
-// import React from "react";
+import React from "react";
 
-// const Note = ({ note }) => {
-//   return <li>{note.content}</li>;
-// };
+const Note = ({ note }) => {
+  return (
+    <span>
+      <li>{note.content}</li>
+      <li>{note.date}</li>
+      <hr />
+    </span>
+  );
+};
 
-// export default Note;
+export default Note;

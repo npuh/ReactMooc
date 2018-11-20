@@ -1,25 +1,14 @@
 import React from "react";
-import Kurssi from "./components/Kurssi";
-import Taulukko from "./Taulukko";
-import Haku from "./Haku";
-import Anekdootti from "./Anekdootti";
-import Palaute from "./Palaute";
+import Phonebook from "./components/Phonebook";
 
-const App = ({ kurssit }) => {
-  return (
-    <div>
-      <Kurssi kurssit={kurssit} />
-
-      <hr />
-      <Palaute />
-      <hr />
-      <Haku />
-      <hr />
-      <Anekdootti />
-      <hr />
-      <Taulukko />
-    </div>
-  );
-};
+class App extends React.Component {
+  render() {
+    return (
+      <div>
+        <Phonebook />
+      </div>
+    );
+  }
+}
 
 export default App;
