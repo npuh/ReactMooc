@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 
+//Describin the Button and the calculations
 const Button = ({ handler, text }) => <button onClick={handler}>{text}</button>;
 const Statistics = ({ text1, text2, text3, hyva, huono, neutraali }) => (
   <div>
@@ -25,6 +26,7 @@ const Statistic = ({ keskiarvo, text, prosentit, textprosentti }) => (
     </p>
   </div>
 );
+
 class Palaute extends Component {
   state = {
     hyva: 0,
@@ -34,7 +36,7 @@ class Palaute extends Component {
     huonoArvo: 0,
     kaikki: 0
   };
-
+  //Gives a good vote.
   klikHyva = () => {
     this.setState({
       hyva: this.state.hyva + 1,
@@ -42,12 +44,14 @@ class Palaute extends Component {
       kaikki: this.state.kaikki + 1
     });
   };
+  //Gives a neutral vote.
   klikNeutraali = () => {
     this.setState({
       neutraali: this.state.neutraali + 1,
       kaikki: this.state.kaikki + 1
     });
   };
+  //Gives a bad vote.
   klikHuono = () => {
     this.setState({
       huono: this.state.huono + 1,
@@ -55,7 +59,7 @@ class Palaute extends Component {
       kaikki: this.state.kaikki + 1
     });
   };
-
+  //Calculates avg of votes.
   getKeskiArvo() {
     const hyvaArvo = this.state.hyvaArvo;
     const huonoArvo = this.state.huonoArvo;
@@ -64,6 +68,7 @@ class Palaute extends Component {
     let keskiarvo = summa / kaikki;
     return keskiarvo.toFixed(2);
   }
+  //Calculates the procentage of all votes.
   getProsentit() {
     const hyva = this.state.hyva;
     const kaikki = this.state.kaikki;

@@ -1,21 +1,5 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import Haku from "./Haku";
-import Palaute from "./Palaute";
-import Anekdootti from "./Anekdootti";
-
-class App extends React.Component {
-  render() {
-    return (
-      <div>
-        <Palaute />
-        <hr />
-        <Anekdootti />
-        <hr />
-        <Haku />
-      </div>
-    );
-  }
-}
+import App from "./App";
 
 ReactDOM.render(<App />, document.getElementById("root"));

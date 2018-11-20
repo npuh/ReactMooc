@@ -13,9 +13,11 @@ const anecdotes = [
 class Anekdootti extends Component {
   state = {
     selected: 0,
-    pisteet: { 0: 0, 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0 }
+    pisteet: { 0: 0, 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0 },
+    maksimi: 0
   };
 
+  //Generates a random number and shows an anecdote in that (random number's) index of anecdotes.
   randomNumber = () => {
     let number = Math.floor(Math.random() * 7);
     this.setState({
@@ -24,7 +26,9 @@ class Anekdootti extends Component {
     console.log(number);
   };
 
+  //This calculates the votes for each anecdote.
   vote = () => {
+    let maxim = this.state.maksimi;
     let numero = this.state.selected;
     console.log("Äänen sai anekdootti numero: ", numero);
     let pointsit = this.state.pisteet;
@@ -33,37 +37,52 @@ class Anekdootti extends Component {
       this.setState({
         pisteet: pointsit
       });
-      console.log(pointsit);
+      console.log("Numerot: ", pointsit);
+
+      //I know this isn't the best practise, I'll get back to this one later... Actually it doesen't even work correctly.
+      maxim = Math.max(
+        pointsit[0],
+        pointsit[1],
+        pointsit[2],
+        pointsit[3],
+        pointsit[4],
+        pointsit[5],
+        pointsit[6]
+      );
+      this.setState({
+        maksimi: maxim
+      });
     }
   };
 
   render() {
     const sanonnat = () => {
       if (this.state.selected >= 0) {
-        return <p>{anecdotes[this.state.selected]}</p>;
+        return (
+          <div>
+            <p>Anecdote: {anecdotes[this.state.selected]}</p>
+            <p>
+              Max votes: {anecdotes[this.state.pisteet[this.state.maksimi]]}
+            </p>
+          </div>
+        );
       }
     };
     const votes = () => {
       if (this.state.pisteet.length !== 0) {
-        return <p>Total votes: {this.state.pisteet[this.state.selected]}</p>;
+        return (
+          <div>
+            <p>Total votes: {this.state.pisteet[this.state.selected]} </p>
+            <p>Maxim votes: {this.state.maksimi}</p>
+          </div>
+        );
       }
     };
-
-    // const mostVotes = () => {
-
-    // let mx = Math.max.apply(Math, pointsit);
-    // console.log("Max: ", mx);
-    //   let numero = Math.max(this.state.pointsit);
-    //   console.log("Max: ", numero);
-    //   let dootti = anecdotes[this.state.selected];
-    //   console.log("Most votes: ", dootti);
-    // };
 
     return (
       <div>
         {sanonnat()}
         {votes()}
-        {/* {mostVotes()} */}
         <button onClick={this.vote}>Vote</button>
         <button onClick={this.randomNumber}>Next random anecdote</button>
       </div>
