@@ -1,6 +1,45 @@
 import React from "react";
 
-const Kurssi = ({ kurssit }) => {
+const Kurssi = () => {
+  const kurssit = [
+    {
+      nimi: "Half Stack -sovelluskehitys",
+      id: 1,
+      osat: [
+        {
+          nimi: "Reactin perusteet",
+          tehtavia: 10,
+          id: 1
+        },
+        {
+          nimi: "Tiedonvälitys propseilla",
+          tehtavia: 7,
+          id: 2
+        },
+        {
+          nimi: "Komponenttien tila",
+          tehtavia: 14,
+          id: 3
+        }
+      ]
+    },
+    {
+      nimi: "Node.js",
+      id: 2,
+      osat: [
+        {
+          nimi: "Routing",
+          tehtavia: 3,
+          id: 1
+        },
+        {
+          nimi: "Middlewaret",
+          tehtavia: 7,
+          id: 2
+        }
+      ]
+    }
+  ];
   //Calculates the total amount of tehtavia.
   const calculate = kurssit[0].osat.reduce((total, amount) => {
     return (total += amount.tehtavia);
@@ -11,6 +50,7 @@ const Kurssi = ({ kurssit }) => {
 
   const total = calculate + calc2;
   console.log("Total: ", total);
+
   return (
     <div>
       {kurssit.kurssit}
