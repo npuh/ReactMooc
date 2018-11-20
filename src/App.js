@@ -7,41 +7,60 @@ import Palaute from "./Palaute";
 // import Note from "./components/Note";
 
 const App = () => {
-  const kurssi = {
-    nimi: "Half Stack -sovelluskehitys",
-    osat: [
-      {
-        nimi: "Reactin perusteet",
-        tehtavia: 10,
-        id: 1
-      },
-      {
-        nimi: "Tiedonvälitys propseilla",
-        tehtavia: 7,
-        id: 2
-      },
-      {
-        nimi: "Komponenttien tila",
-        tehtavia: 14,
-        id: 3
-      },
-      {
-        nimi: "Mun oma",
-        tehtavia: 10000,
-        id: 4
-      }
-    ]
-  };
+  const kurssit = [
+    {
+      nimi: "Half Stack -sovelluskehitys",
+      id: 1,
+      osat: [
+        {
+          nimi: "Reactin perusteet",
+          tehtavia: 10,
+          id: 1
+        },
+        {
+          nimi: "Tiedonvälitys propseilla",
+          tehtavia: 7,
+          id: 2
+        },
+        {
+          nimi: "Komponenttien tila",
+          tehtavia: 14,
+          id: 3
+        }
+      ]
+    },
+    {
+      nimi: "Node.js",
+      id: 2,
+      osat: [
+        {
+          nimi: "Routing",
+          tehtavia: 3,
+          id: 1
+        },
+        {
+          nimi: "Middlewaret",
+          tehtavia: 7,
+          id: 2
+        }
+      ]
+    }
+  ];
   //Calculates the total amount of tehtavia.
-  const calculate = kurssi.osat.reduce((total, amount) => {
+  const calculate = kurssit[0].osat.reduce((total, amount) => {
     return (total += amount.tehtavia);
   }, 0);
-  console.log("Total: ", calculate);
+  const calc2 = kurssit[1].osat.reduce((total, amount) => {
+    return (total += amount.tehtavia);
+  }, 0);
+
+  const total = calculate + calc2;
+  console.log("Total: ", total);
 
   return (
     <div>
-      <Kurssi kurssi={kurssi} />
-      <p>Tehtäviä yhteensä: {calculate}</p>
+      <Kurssi kurssit={kurssit} />
+      <p>Tehtäviä yhteensä: {total}</p>
       <hr />
       <Palaute />
       <hr />

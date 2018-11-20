@@ -1,13 +1,22 @@
 import React from "react";
 
-const Kurssi = ({ kurssi }) => {
+const Kurssi = ({ kurssit }) => {
   return (
     <div>
-      <h1>{kurssi.nimi}</h1>
-      {kurssi.osat.map(osa => (
+      {kurssit.kurssit}
+      <h1>Opetusohjelma</h1>
+      <h1>{kurssit[0].nimi}</h1>
+      {kurssit[0].osat.map(osa => (
         <ul key={osa.id}>
-          <li>{osa.nimi}</li>
-          <li>{osa.tehtavia}</li>
+          <li>Kurssin osa: {osa.nimi}</li>
+          <li>Tehtäviä: {osa.tehtavia}</li>
+        </ul>
+      ))}
+      <h1>{kurssit[1].nimi}</h1>
+      {kurssit[1].osat.map(osa => (
+        <ul key={osa.id}>
+          <li>Kurssin osa: {osa.nimi}</li>
+          <li>Tehtäviä: {osa.tehtavia}</li>
         </ul>
       ))}
     </div>
