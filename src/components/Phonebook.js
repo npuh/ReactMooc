@@ -13,7 +13,6 @@ class Phonebook extends React.Component {
         { name: "Arto Hellas", phonenumber: "111" },
         { name: "Nina Puhakka", phonenumber: "222" }
       ],
-      newName: "",
       checked: false
     };
   }
@@ -75,7 +74,7 @@ class Phonebook extends React.Component {
             Nimi:
             <Input handler={this.handleNameChange} value={this.value} />
           </div>
-          Puhelinnumero:{" "}
+          Numero:{" "}
           <Input
             handler={this.handlePhoneNumberChange}
             phonenumber={this.value}
