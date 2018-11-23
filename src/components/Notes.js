@@ -31,6 +31,7 @@ class Notes extends React.Component {
     console.log("nappia painettu");
     console.log(event.target);
   };
+
   handleNoteChange = e => {
     console.log(e.target.value);
     this.setState({ newNote: e.target.value });
