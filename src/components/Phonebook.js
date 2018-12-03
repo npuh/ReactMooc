@@ -41,7 +41,7 @@ class Phonebook extends React.Component {
     people.forEach(function(nimi, index) {
       console.log("nimi: ", nimi, "index", index);
       if (newPersonObject.name === nimi.name) {
-        alert("Nimi on jo listassa!");
+        console.log("Nimi on jo listassa!");
         console.log("virheen jälkeen ihmiset", people);
         return (checked = false);
       } else {
@@ -75,7 +75,7 @@ class Phonebook extends React.Component {
 
   render() {
     let filteredNames = this.state.persons.filter(person => {
-      return person.name.indexOf(this.state.search) !== -1;
+      return person.name.toLowerCase().indexOf(this.state.search) !== -1;
     });
     return (
       <div>
