@@ -11,12 +11,19 @@ class Phonebook extends React.Component {
     this.state = {
       persons: [
         { name: "Arto Hellas", phonenumber: "111" },
-        { name: "Nina Puhakka", phonenumber: "222" }
+        { name: "Nina Puhakka", phonenumber: "222" },
+        { name: "Nina Plaaplaa", phonenumber: "333" }
       ],
-      checked: false
+      checked: false,
+      search: ""
     };
   }
 
+  updateSearch(e) {
+    this.setState({ search: e.target.value.substr(0, 20) });
+  }
+
+  //Adds a new name to the phonebook
   addName = e => {
     e.preventDefault();
     this.checkName();
@@ -31,7 +38,7 @@ class Phonebook extends React.Component {
     console.log("new name", newPersonObject);
     let checked = this.state.checked;
     const people = this.state.persons;
-    people.forEach(function(nimi, index, array) {
+    people.forEach(function(nimi, index) {
       console.log("nimi: ", nimi, "index", index);
       if (newPersonObject.name === nimi.name) {
         alert("Nimi on jo listassa!");
@@ -65,11 +72,24 @@ class Phonebook extends React.Component {
     console.log("Number", phonenumber);
     this.setState({ newPhone: phonenumber });
   };
+
   render() {
+    let filteredNames = this.state.persons.filter(person => {
+      return person.name.indexOf(this.state.search) !== -1;
+    });
     return (
       <div>
         <h2>Puhelinluettelo</h2>
         <form>
+          <div>
+            Rajaa näytettäviä:
+            <Input
+              handler={this.updateSearch.bind(this)}
+              value={this.state.search}
+            />
+            <Button text={"Rajaa"} />
+          </div>
+          <h2>Lisää uusi nimi luetteloon</h2>
           <div>
             Nimi:
             <Input handler={this.handleNameChange} value={this.value} />
@@ -85,7 +105,7 @@ class Phonebook extends React.Component {
         </form>
         <h2>Numerot</h2>
         <ul>
-          {this.state.persons.map(person => (
+          {filteredNames.map(person => (
             <li key={person.name}>
               {person.name}, pnro: {person.phonenumber}
             </li>
